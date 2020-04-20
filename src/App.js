@@ -8,8 +8,10 @@ class App extends Component {
             seconds: 0
         }
 
-        this.handleChangeMins = this.handleChangeMins.bind(this);
-        this.handleChangeSecs = this.handleChangeSecs.bind(this);
+        this.incrementMins = this.incrementMins.bind(this);
+        this.decrementMins = this.decrementMins.bind(this);
+        this.incrementSecs = this.incrementSecs.bind(this);
+        this.decrementSecs = this.decrementSecs.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -18,16 +20,31 @@ class App extends Component {
         event.preventDefault();
     }
 
-    handleChangeMins(event) { 
-        this.setState({ minutes: event.target.value }); 
+    incrementMins() { 
+        this.setState({
+             minutes: this.state.minutes + 1 
+            }); 
     }
 
-    handleChangeSecs(event) { 
-        this.setState({ seconds: event.target.value }); 
+    decrementMins() { 
+        this.setState({  
+            minutes: this.state.minutes - 1
+        }); 
+    }
+
+    incrementSecs() { 
+        this.setState({
+             seconds: this.state.seconds + 1 
+            }); 
+    }
+
+    decrementSecs() { 
+        this.setState({  
+            seconds: this.state.seconds - 1
+        }); 
     }
 
     render() {
-
         let padSecs = String(this.state.seconds).padStart(2, '0');
         let padMins = String(this.state.minutes).padStart(2, '0');
 
@@ -40,10 +57,12 @@ class App extends Component {
 
                 <form onSubmit={this.handleSubmit}>
                     <label>Minutes: </label>
-                    <input type='number' value={this.state.minutes} onChange = {this.handleChangeMins}/>
+                    <input className= 'ma2' type='button' value = '+' onClick = {this.incrementMins}/>
+                    <input className= 'ma2' type='button' value = '-' onClick = {this.decrementMins}/>
                     <br />
                     <label> Seconds: </label>
-                    <input type='number' value={this.state.seconds} onChange = {this.handleChangeSecs} />
+                    <input className= 'ma2'type='button' value = '+' onClick = {this.incrementSecs}/>
+                    <input className= 'ma2'type='button' value = '-' onClick = {this.decrementSecs}/>
                     <br />
                     <input type='submit' value='Start' />
                 </form>
