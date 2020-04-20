@@ -2,10 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import App from './App';
+import 'tachyons';
+import 'p5';
 
 ReactDOM.render(
   <React.StrictMode>
-    <h1>Workout</h1>
+    <div>
+      <h1 className = 'tc pa3'>Workout</h1>
+      <App />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
