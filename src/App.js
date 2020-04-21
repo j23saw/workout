@@ -14,6 +14,7 @@ class App extends Component {
         this.incrementSecs = this.incrementSecs.bind(this);
         this.decrementSecs = this.decrementSecs.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleNegTime = this.handleNegTime.bind(this);
     }
 
 
@@ -60,7 +61,7 @@ class App extends Component {
         });
     }
 
-    componentDidMount() {
+    handleNegTime() {
         let decbut = document.querySelectorAll(".decbut");
         decbut.forEach(element => {
             element.disabled = true;
