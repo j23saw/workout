@@ -62,7 +62,9 @@ class App extends Component {
 
     componentDidMount() {
         let decbut = document.querySelectorAll(".decbut");
-        decbut.disabled = true;
+        decbut.forEach(element => {
+            element.disabled = true;
+        });
     }
 
     render() {
