@@ -50,25 +50,25 @@ class App extends Component {
 
     incrementSecs() {
         this.setState({
-            seconds: this.state.seconds + 1
+            seconds: this.state.seconds + 15
         });
     }
 
     decrementSecs() {
         this.setState({
-            seconds: this.state.seconds - 1
+            seconds: this.state.seconds - 15
         });
     }
 
     render() {
-        let padSecs = String(this.state.seconds).padStart(2, '0');
-        let padMins = String(this.state.minutes).padStart(2, '0');
-
+        const {seconds} = this.state;
+        let padSecs = String((seconds > 60)?seconds%60:seconds).padStart(2, '0');
+        let padMins = String(Math.floor(seconds/60)).padStart(2, '0');
 
         return (
             <div className='tc'>
                 <p>
-                    {padMins}:{padSecs}
+                    {padMins}:{(seconds%60 === 0)?'00':padSecs}
                 </p>
 
                 <form onSubmit={this.handleSubmit}>
