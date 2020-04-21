@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-    
+
     constructor() {
         super();
         this.state = {
             minutes: 0,
             seconds: 0
         }
-        
+
         this.incrementMins = this.incrementMins.bind(this);
         this.decrementMins = this.decrementMins.bind(this);
         this.incrementSecs = this.incrementSecs.bind(this);
@@ -29,9 +29,9 @@ class App extends Component {
                     clearInterval(this.myInterval)
                 } else {
                     this.setState(this.decrementMins());
-                    this.setState({seconds : 59});
+                    this.setState({ seconds: 59 });
                 }
-            } 
+            }
         }, 1000)
         event.preventDefault();
     }
@@ -60,27 +60,34 @@ class App extends Component {
         });
     }
 
+    componentDidMount() {
+        let decbut = document.querySelectorAll(".decbut");
+        decbut.disabled = true;
+    }
+
     render() {
-        const {seconds, minutes} = this.state;
-        let padSecs = String((seconds > 60)?seconds%60:seconds).padStart(2, '0');
+        const { seconds, minutes } = this.state;
+        let padSecs = String((seconds > 60) ? seconds % 60 : seconds).padStart(2, '0');
         let padMins = String(minutes).padStart(2, '0');
 
         return (
             <div className='tc'>
                 <p>
-                    {padMins}:{(seconds%60 === 0)?'00':padSecs}
+                    {padMins}:{(seconds % 60 === 0) ? '00' : padSecs}
                 </p>
 
-                <form onSubmit={this.handleSubmit}>
-                    <label>Minutes: </label>
-                    <input className='ma2' type='button' value='+' onClick={this.incrementMins} />
-                    <input className='ma2' type='button' value='-' onClick={this.decrementMins} />
-                    <br />
-                    <label> Seconds: </label>
-                    <input className='ma2' type='button' value='+' onClick={this.incrementSecs} />
-                    <input className='ma2' type='button' value='-' onClick={this.decrementSecs} />
-                    <br />
-                    <input type='submit' value='Start' />
+                <form onSubmit={this.handleSubmit}>                    
+                    <div>
+                        <label>Minutes: </label>
+                        <input className='ma2' type='button' value='+' onClick={this.incrementMins} />
+                        <input className='ma2' type='button' class="decbut" value='-' onClick={this.decrementMins} />
+                        <br />
+                        <label> Seconds: </label>
+                        <input className='ma2' type='button' value='+' onClick={this.incrementSecs} />
+                        <input className='ma2' type='button' class="decbut" value='-' onClick={this.decrementSecs} />
+                        <br />                  
+                        <input type='submit' value='Start' />
+                    </div> 
                 </form>
             </div>
         )
