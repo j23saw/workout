@@ -56,7 +56,7 @@ class App extends Component {
 
     decrementSecs() {
         this.setState({
-            seconds: this.state.seconds - 15
+            seconds: this.state.seconds - 1
         });
     }
 
