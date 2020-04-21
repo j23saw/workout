@@ -61,9 +61,9 @@ class App extends Component {
     }
 
     render() {
-        const {seconds} = this.state;
+        const {seconds, minutes} = this.state;
         let padSecs = String((seconds > 60)?seconds%60:seconds).padStart(2, '0');
-        let padMins = String(Math.floor(seconds/60)).padStart(2, '0');
+        let padMins = String(minutes).padStart(2, '0');
 
         return (
             <div className='tc'>
