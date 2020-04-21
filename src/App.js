@@ -63,6 +63,7 @@ class App extends Component {
 
     handleNegTime() {
         let decbut = document.querySelectorAll(".decbut");
+        
         decbut.forEach(element => {
             element.disabled = true;
         });
